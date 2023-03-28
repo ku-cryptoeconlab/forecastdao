@@ -1,0 +1,85 @@
+= ForecastDAO White Paper
+
+== Introduction
+
+Government and corporate leaders often consult with subject-matter experts who estimate the likelihood that significant future events will occur. For example, members of the Federal Open Market Committee (FOMC) of the United States Federal Reserve Bank release their forecasts of key economic indicators for the US economy every quarter, and the “Blue Chip Economic Indicators” forecast is based on a survey of leading business economists’ predictions. These experts typically provide a justification for their prediction as well as a commentary on the current and future economic environment. Unfortunately, the success of this forecasting approach, known as the Delphi method, relies on the knowledge and judgment of only a handful of individuals. 
+
+Prediction markets, or idea markets, have the potential to overcome the flaws of human subject-matter experts by tapping into the wisdom of a much larger number of people. Participants in a prediction market buy and sell a contract based on the probability that an event will occur. The price of a prediction market contract is a crowd-sourced indicator of the likelihood that a future event will occur. Similar to the Delphi method, these centralized prediction markets, including Kalshi, Good Judgment Open, and PredictIt often allow individuals to publish justifications for their forecasts. However, they suffer from a single point of failure. If these organizing entities cease to exist or they decide to restrict access to their platform, the public will no longer have access to a historical record of predictions. 
+
+Decentralized prediction markets can be built on blockchain technology and provide a censorship-resistant and publicly transparent record of transactions. However, these markets present significant challenges whenever low levels of liquidity exist or risk-averse individuals are unwilling to participate. In addition, platforms like Augur only report the individual probabilities and outcomes of future events. They do not provide the reasoning or rationale behind each individual’s forecast. Because all future events are unknown, a person could be considered to be a good forecaster even if the forecast itself is wrong. 
+
+For example, suppose that in a head-to-head Texas Hold’em match, one player is dealt a 2 of spades and a 7 of diamonds while his opponent is dealt a pair of aces. For those unfamiliar with the rules of poker, these represent the worst and the best possible hands that one can be dealt in a game of poker. If the person with a pair of aces goes “all-in” or bets all of his chips, the other person would most likely fold his cards. 
+
+Because the future is uncertain, the pocket aces can still lose the hand however. The person holding the 2 of spades and the 7 of diamonds likely demonstrates poor judgment if he does not fold. Before poker aficionados object, there may times when it makes sense to play the worst possible poker hand because of the opponent’s behavior. Setting those situations aside, over a long enough period of time, the person who makes bad poker decisions will eventually lose his money even when he is lucky in the short-run. As the economist John Maynard Keynes said, “markets can remain irrational longer than you can remain solvent.” Because prediction markets can suffer from this same phenomenon, the poker example illustrates the importance of understanding the rationale behind a forecaster’s prediction. Government and corporate leaders should value forecasters who demonstrate a thorough understanding of the environment and the data-generating process instead of someone who just guesses right more often than not.
+
+== Overview
+
+The ForecastDAO combines the best elements of subject-matter expertise and prediction markets. The ForecastDAO is built using blockchain technology and other decentralized communication protocols, while individuals are compensated for participation in the work of forecasting by explaining the rationale behind their forecast. Because forecasts and their rationales are written to a blockchain, ForecastDAO incorporates a reputation-based system that enables more accurate prediction aggregation. Whenever a forecast and the written rationale is recorded to a blockchain, individuals can verify for themselves why a forecaster made a particular prediction. Publishing a verifiable history of forecasts associated with each individual forecaster, while preserving anonymity, may encourage more individuals to participate in event forecasts. 
+
+== Subdaos and treasury management
+
+ForecastDAO will be managed under the forecastdao.eth domain name. Forecasting communities, or subdaos, will be assigned as subdomains of forecastdao.eth. Initially, there will be one subdao, econdata.forecastdao.eth. The treasury for this subdao will be funded with support from the Cryptoeconomics Lab at the University of Cincinnati. The econdata subdao will publish economic indicator forecasts from sources that include the Economic Indicators Calendar released by the Federal Reserve Bank of New York. 
+
+A subdao’s board of directors is responsible for selecting indicators, managing the treasury, and identifying and compensating the forecasters who participate. In order to encourage forecaster participation, funds from the treasury are used to compensate forecasters who not only provide accurate forecasts, but who also write insightful rationales that justify their forecast.  
+
+== Implementation
+
+Forecast values and rationales will be posted, archived, and tracked on Nostr, a decentralized communication protocol that stands for “Notes and Other Stuff Transmitted by Relays.”
+
+“Nostr is an open protocol that aims to create a censorship-resistant global data-sharing network, primarily focusing on improving social networks. The protocol doesn’t rely on a trusted central server; instead, all users can run a client. Using this client, users publish content by writing a post, signing it with their private key and sending it to other servers, which then relay that content. The relays are simple: Their only job is to accept posts and forward them along to relay participants. Users could trust one relay or several relays with their data, and should relays collude to remove their information or block their broadcasts; the user could run their own relay instead.”
+
+https://thebitcoinmanual.com/articles/what-is-nostr/
+
+The ForecastDAO will host its own Nostr relay at the Kautz-Uible Cryptoeconomics Lab at the University of Cincinnati. Individuals who want to participate in the forecasting DAO will post their forecast values and rationales to the lab’s relay node using the format described below. 
+
+Suppose that the ForecastDAO plans to forecast monthly employment in the United States. On the first Friday of every month, the US Bureau of Labor Statistics releases the monthly change in the nation’s non-farm payroll employment figures. This seasonally adjusted value is released at 8:30am. Prior to the release of the indicator and in order to be compensated for their work, forecasters must send a nostr note to the Kautz-Uible Cryptoeconomics lab relay using the following format:
+
+* #payems 
+* #value 223,000 
+* #rationale The previous release of weekly unemployment insurance claims were higher than many Wall Street analysts expected. Job openings data from the most recent JOLTS report was also soft, and consumer confidence changed little since the previous report. Several tech companies also recently announced significant layoffs.  
+  
+*#payems* - a tag indicating that this Nostr note is an individual’s submission to forecast the change in seasonally-adjusted non-farm payroll employment. If the #value and #rationale tags are not indicated, then any comments in the Nostr note are just considered to be discussion among forecasters about the particular forecasting event.
+
+*#value* – the individual’s forecast value
+
+*#rationale* – a justification for the forecasted value 
+
+Open-source software written by UC’s Kautz-Uible Cryptoeconomics Lab will capture all of the forecast data on its nostr relay. Any forecast must be submitted no later than 1 hour prior to the release of the official economic indicator in order to be considered in the work epoch. The work epoch for the next economic indicator release will begin one hour after the official release. https://www.bls.gov/news.release/jolts.nr0.htm
+
+econdata.forecastdao.eth will analyze the forecast values against the official number released by the Bureau of Labor Statistics. When the forecast is submitted, a Nostr bot will review the note to make sure that it conforms to the submission format. For example, if the #rationale is less than 140 characters, then the forecaster will receive a message saying that their note is not valid. Future versions of the bot will detect if the rationale is coherent text. 
+
+If forecasters submit multiple forecast values and rationales, only the most recent time-stamped Nostr note will be considered as the forecaster’s submission for that work epoch. 
+
+32% of forecasted values which are closest to the actual value (e.g. 1 standard deviation), who also submit a rationale of at least 140 characters, will receive 68% of the compensation pool for their work effort. Forecasted values that are closer than 95% of the submitted values (e.g. 2 standard deviations), along with a rationale of at least 280 characters, will receive an additional 27% of the compensation pool. Any ties are broken in favor of the forecaster who publishes first. The remaining 5% of the subdao’s treasury funds will remain with the forecasting subdao for administration and overhead expenses. E.g. suppose that there are 100 individuals who submit forecasts for a particular economic indicator, and the compensation pool contains $1000.
+
+32 individuals will equally split $680, or 680/32 = $21.25 per individual for their work efforts
+
+5 of these individuals will equally split an additional $270, or 270/5 = $54 – for a total of $75.25
+
+The remaining $50 will go to the econdata.forecastdao.eth for administrative expenses.
+
+If a forecaster does not want to publish their forecast value and rationale for public view prior to the release of the economic indicator, the individual can encrypt their value and rationale in the nostr note using the subdao’s public key. After the economic indicator has been published, the subdao will decrypt these values and publish all of the forecasts and rationales. A new public key will be generated for each indicator’s work epoch. Forecasts will be published on the Ocean protocol, which describes itself as a platform that “creates simple tools to publish data and consume data as decentralized data NFTs and data tokens.” Purchases of the forecasting data will contribute to the subdao’s treasury.
+
+== Governance
+
+A governing board will be created to approve the creation of future subdaos; and a new subdao must submit a proposed charter to this board for review. A charter should describe the domain of forecasting questions as well as the source of treasury funds. For example, a municipality may decide to create a forecasting community to help it forecast income tax collections or predict attendance at sporting events in order to estimate sales tax collections. Companies may create and fund a forecasting subdao as a talent recruitment pipeline. By analyzing the rationales from the forecasting community, the company can identify high potential employees for the company. 
+
+== Research
+
+By hosting forecasting data on a blockchain, researchers can better understand the performance of a forecasting DAO against traditional forecasting methods and techniques. Researchers can estimate the difference between the predicted outcomes and the actual outcomes of a set of forecasted events. They may also study how forecasting performance varies across different types of events. E.g. how does a forecasting DAO perform when predicting economic, political, or epidemiological events?
+
+While the original intent of the forecastDAO is to compensate the work of forecasters for writing rationales for their forecasts, researchers can analyze various types of compensation structures that reward individuals for participation in particular forecasting work epochs. The publication of rationales will also allow researchers to apply natural language processing (NLP) to identify common errors that forecasters make. In turn, educators can develop training materials to mitigate these errors and improve forecasting techniques. By identifying individuals who undergo training, researchers could also evaluate their performance against teams in the ForecastDAO without training.  
+
+== List of Indicators
+* *#payems* 
+Current Employment Statistics (Establishment Survey); All Employees, Total Nonfarm, Monthly Change
+(e.g. 311,000)
+
+* *#cpiu* 
+Consumer Price Index for All Urban Consumers; 12-month percentage change
+(e.g. 5.8)
+
+* *#rgdp* 
+Annual real GDP; 12-month percentage change
+(e.g. 2.7)
+  
