@@ -34,6 +34,7 @@ The ForecastDAO will host its own Nostr relay at the Kautz-Uible Cryptoeconomics
 
 Suppose that the ForecastDAO plans to forecast monthly employment in the United States. On the first Friday of every month, the US Bureau of Labor Statistics releases the monthly change in the nation’s non-farm payroll employment figures. This seasonally adjusted value is released at 8:30am. Prior to the release of the indicator and in order to be compensated for their work, forecasters must send a nostr note to the Kautz-Uible Cryptoeconomics lab relay using the following format:
 
+* #forecastdao
 * #indicator payems 
 * #value 223,000 
 * #rationale The previous release of weekly unemployment insurance claims were higher than many Wall Street analysts expected. Job openings data from the most recent JOLTS report was also soft, and consumer confidence changed little since the previous report. Several tech companies also recently announced significant layoffs.  
