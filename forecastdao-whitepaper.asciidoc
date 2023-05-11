@@ -71,7 +71,7 @@ By hosting forecasting data on a blockchain, researchers can better understand t
 
 While the original intent of the forecastDAO is to compensate the work of forecasters for writing rationales for their forecasts, researchers can analyze various types of compensation structures that reward individuals for participation in particular forecasting work epochs. The publication of rationales will also allow researchers to apply natural language processing (NLP) to identify common errors that forecasters make. In turn, educators can develop training materials to mitigate these errors and improve forecasting techniques. By identifying individuals who undergo training, researchers could also evaluate their performance against teams in the ForecastDAO without training.  
 
-== List of Indicators
+== List of Indicators (Indices and percent changes are reported to 1 decimal point)
 * *#payems* 
 Current Employment Statistics (Establishment Survey); All Employees, Total Nonfarm, Monthly Change
 (e.g. 311,000)
@@ -83,4 +83,12 @@ Consumer Price Index for All Urban Consumers; 12-month percentage change
 * *#rgdp* 
 Annual real GDP; 12-month percentage change
 (e.g. 2.7)
+
+* *#indpro* 
+Industrial Production Index
+(e.g. 102.5)
+
+* *#umcsent* 
+University of Michigan: Consumer Sentiment
+(e.g. 73.3)
   
